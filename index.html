@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Alec T. Habig | Particle Astrophysicist</title>
+  <meta name="description" content="Dr. Alec Habig is a Professor of Physics and Astronomy at the University of Minnesota Duluth, specializing in experimental neutrino physics and particle astrophysics."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #05070a; /* Deepest space black-blue */
+      --bg2:      #0a0d14; /* Slightly lighter for contrast */
+      --bg3:      #111621; /* Section backgrounds */
+      --cream:    #e0e6ed; /* Crisp, cool white-blue for primary text */
+      --cream2:   #a3b1c2; /* Muted silver-blue for secondary text */
+      --gold:     #4fc3f7; /* Neutrino "flash" cyan-blue */
+      --gold2:    #81d4fa; /* Lighter cyan for highlights */
+      --teal:     #26c6da; /* Secondary accent (Cherenkov radiation) */
+      --teal2:    #4dd0e1; /* Lighter Cherenkov accent */
+      --dim:      #546e7a; /* Muted slate for labels */
+      --line:     rgba(79,195,247,0.15); /* Subtle cyan lines */
+      --white:    #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--bg);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(5,7,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(79,195,247,0.12);
+    }
+    .nav-brand {
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--cream2);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 300;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold2); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle star-field background */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 12% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 28% 42%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 55% 8%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 72% 63%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 22%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 78%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 18% 88%, rgba(79,195,247,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 95% 45%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 63% 35%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 82% 80%, rgba(79,195,247,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5% 55%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 47% 92%, rgba(255,255,255,0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-left {
+      padding: 5rem 4rem 5rem 6rem;
+      position: relative;
+    }
+
+    .hero-tag {
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-tag::before {
+      content: "";
+      width: 30px; height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-name {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--gold2);
+    }
+
+    .hero-title-line {
+      font-size: 0.85rem;
+      color: var(--cream2);
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .hero-divider {
+      width: 50px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 2rem;
+    }
+
+    .hero-bio {
+      font-size: 0.98rem;
+      color: var(--cream2);
+      max-width: 460px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+    .hero-stat-num {
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      color: var(--gold2);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--dim);
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--bg);
+    }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid rgba(79,195,247,0.4);
+      color: var(--gold2);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold2);
+      background: rgba(79,195,247,0.08);
+      transform: translateY(-1px);
+    }
+
+    /* HERO RIGHT - PHOTO */
+    .hero-right {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-container {
+      position: relative;
+      width: 420px;
+      height: 520px;
+    }
+
+    .photo-frame {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(8%) contrast(1.02);
+    }
+
+    /* Artistic overlay on photo */
+    .photo-container::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        transparent 55%,
+        rgba(5,7,10,0.6) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Decorative frame elements */
+    .photo-deco-tl {
+      position: absolute;
+      top: -12px; left: -12px;
+      width: 60px; height: 60px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+      pointer-events: none;
+    }
+    .photo-deco-br {
+      position: absolute;
+      bottom: -12px; right: -12px;
+      width: 60px; height: 60px;
+      border-bottom: 2px solid var(--teal);
+      border-right: 2px solid var(--teal);
+      pointer-events: none;
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      z-index: 2;
+      font-family: "DM Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(240,232,216,0.7);
+      text-transform: uppercase;
+    }
+
+    /* SECTION BASE */
+    .section {
+      padding: 6rem 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      font-family: "DM Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .section-title em { font-style: italic; color: var(--gold2); }
+
+    .section-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+      margin: 6rem auto;
+      max-width: 1100px;
+    }
+
+    /* RESEARCH SECTION */
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .research-text p {
+      font-size: 0.96rem;
+      color: var(--cream2);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+    .research-text p strong {
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    .research-side h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* SNEWS CARD */
+    .snews-card {
+      background: linear-gradient(135deg, rgba(38,198,218,0.12), rgba(79,195,247,0.06));
+      border: 1px solid rgba(42,143,138,0.3);
+      padding: 2rem;
+      margin-top: 1.5rem;
+      position: relative;
+    }
+    .snews-card::before {
+      content: "SNEWS";
+      position: absolute;
+      top: -0.6rem; left: 1.5rem;
+      background: var(--bg);
+      padding: 0 0.5rem;
+      font-family: "DM Mono", monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--teal2);
+    }
+    .snews-card p {
+      font-size: 0.88rem;
+      color: var(--cream2);
+      line-height: 1.8;
+    }
+    .snews-card p + p { margin-top: 0.8rem; }
+
+    /* EXPERIMENTS */
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .exp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .exp-name {
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+      color: var(--teal2);
+      letter-spacing: 0.1em;
+      min-width: 80px;
+      padding-top: 0.05rem;
+    }
+    .exp-desc {
+      font-size: 0.85rem;
+      color: var(--cream2);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .exp-status {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.4rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .status-active {
+      background: rgba(42,143,138,0.15);
+      color: var(--teal2);
+      border: 1px solid rgba(42,143,138,0.3);
+    }
+    .status-past {
+      background: rgba(110,122,144,0.15);
+      color: var(--dim);
+      border: 1px solid rgba(110,122,144,0.2);
+    }
+
+    /* CAREER TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 8px; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), rgba(200,150,42,0.05));
+    }
+    .tl-item {
+      position: relative;
+      padding: 0 0 2.5rem 2rem;
+    }
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -1.87rem;
+      top: 6px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--gold);
+    }
+    .tl-year {
+      font-family: "DM Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .tl-role {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .tl-place {
+      font-size: 0.82rem;
+      color: var(--dim);
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+    .tl-note {
+      font-size: 0.85rem;
+      color: var(--cream2);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* AWARDS */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .award-card {
+      border: 1px solid var(--line);
+      padding: 1.8rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+      position: relative;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+    }
+    .award-card:hover {
+      border-color: rgba(79,195,247,0.4);
+      background: rgba(79,195,247,0.04);
+      transform: translateY(-3px);
+    }
+    .award-year {
+      font-family: "DM Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .award-name {
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .award-desc {
+      font-size: 0.82rem;
+      color: var(--cream2);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* OUTREACH */
+    .outreach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .outreach-card {
+      background: var(--bg2);
+      border-left: 3px solid var(--teal);
+      padding: 1.8rem;
+    }
+    .outreach-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+    .outreach-card p {
+      font-size: 0.85rem;
+      color: var(--cream2);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* INTERESTS */
+    .interests-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .interest-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 0.75rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--cream2);
+      font-weight: 300;
+    }
+    .interest-icon { font-size: 1.1rem; }
+
+    /* PUBLICATIONS */
+    .pub-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .pub-stat {
+      text-align: center;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+    }
+    .pub-num {
+      font-family: "Playfair Display", serif;
+      font-size: 2.2rem;
+      color: var(--gold2);
+    }
+    .pub-lbl {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-top: 0.4rem;
+    }
+
+    /* SELECTED WORKS */
+    .pubs-list { list-style: none; }
+    .pub-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .pub-year {
+      font-family: "DM Mono", monospace;
+      font-size: 0.68rem;
+      color: var(--dim);
+      padding-top: 0.15rem;
+      white-space: nowrap;
+    }
+    .pub-title {
+      font-size: 0.93rem;
+      color: var(--cream);
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 0.25rem;
+    }
+    .pub-journal {
+      font-size: 0.78rem;
+      color: var(--dim);
+      font-style: italic;
+      font-weight: 300;
+    }
+    .pub-collab {
+      font-size: 0.73rem;
+      color: var(--teal2);
+      font-family: "DM Mono", monospace;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+
+    /* GUIDO */
+    .guido-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 4rem 0;
+    }
+    .guido-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    .guido-paw { font-size: 3.5rem; flex-shrink: 0; }
+    .guido-content h2 {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+    .guido-content .guido-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .guido-content p {
+      font-size: 0.9rem;
+      color: var(--cream2);
+      line-height: 1.8;
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    /* CONTACT/FOOTER */
+    footer {
+      padding: 4rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand em { font-style: italic; color: var(--gold2); }
+    .footer-sub {
+      font-size: 0.78rem;
+      color: var(--dim);
+      font-weight: 300;
+      max-width: 260px;
+      line-height: 1.7;
+    }
+    .footer-links h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--cream2);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold2); }
+    .footer-bottom {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--dim);
+      font-weight: 300;
+    }
+
+    /* QUOTE BLOCK */
+    .blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 1rem 2rem;
+      margin: 2rem 0;
+      background: rgba(79,195,247,0.04);
+    }
+    .blockquote p {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--cream);
+      line-height: 1.7;
+    }
+    .blockquote cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+      font-style: normal;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 7rem 1.5rem 2rem; }
+      .hero-right { height: 60vw; max-height: 480px; }
+      .photo-container { width: 100%; max-width: 340px; height: 400px; }
+      .section { padding: 4rem 1.5rem; }
+      .research-grid,
+      .outreach-grid,
+      .awards-grid { grid-template-columns: 1fr; }
+      .pub-summary { grid-template-columns: 1fr 1fr; }
+      .guido-inner { padding: 0 1.5rem; flex-direction: column; }
+      footer { padding: 3rem 1.5rem; }
+      .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left > * {
+      animation: fadeInUp 0.8s ease both;
+    }
+    .hero-tag    { animation-delay: 0.1s; }
+    .hero-name   { animation-delay: 0.25s; }
+    .hero-title-line { animation-delay: 0.35s; }
+    .hero-divider { animation-delay: 0.45s; }
+    .hero-bio    { animation-delay: 0.55s; }
+    .hero-stats  { animation-delay: 0.65s; }
+    .hero-cta    { animation-delay: 0.75s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+<script type='text/javascript' src='https://private-us-east-1.manuscdn.com/qQKOxQ7zk8xQMCC4HilLo1i6ebHk5ltGitRfE4hjI-je8WgC9CBnT7EQECD1AzmbXzVTUiXNwoLqFkiVjN3oiZF0jD3orc9O_KB8wR1t7C2XzsMVJCs1l7yq3-urKpA3J2so7HRuV2s6yCSf-rOfJfXgZpUFFp-5x5F5qAQQF2h9yVajAK4qP2g__Amha-yLeSrEIa3zRwF29ZLfGwzjia8KBvan3EK5PDk164PGQQwnMFFZdIeGVgUbh6A4u0PMx_ItieZBqz0C6v4klzDZrRxYgj75U70Z2nrTbQHKbq-Q_tfMrQZy-R99hxAk5avMNdT79ujHuGgO54IuoDkOEYNXLVLSawimPoOv8PuJBCv4ugdmlA3CXeSh_FAliCAGwpA1mmIFHTX0_FGE96B7TcNRdpD5wt3f1_Sst9JXhhWs7K6Z5sIwuharkbc0fJgriQrC5kUaVcwjB-_XBt4WnWxY-bA9rv0Dc7DyDzDPWXOlDOgI-o3IWVmzai45bm6Mz8pdPcPsgOjFbcGeqi51FIMqvCVFZaTjLLP7HqQiuoo8V_pQGEgKHLp5lB793HHL9FjVNKmtnp-v8mZFWJWbqARQ7h6iu7I2ojPyZ6X7SAxHjm7WB_NwigKeyBD_vu5biTQm6CUvssw2yee9AkgqA4gdIpletj6ZniKzSsVvI3GH6laYcNTg_uQO0dGfwDBNbuYnPudevhRVwk-ETDw0yjKrABegDbqe60lUzcsRw2KlyWO8trDtejcx_05geyGo0vyGOxGbcKx7NaPXwiCkI1DHOI0ybs8eoiayctXciJltvVdg5z2wZYfkPJIWsw4vON1N4gTGciYUfqyvLMoRh_uJraUYhzkSsN5qAiMksW7jJXqrYJWR9HVHw7IerD-RdakPoVx3j9adiHa0Zj7oYOypUdFk81jhAcKBD7nHqb2n4EswXoGb3EcXuh--TTkFpRxIZXDzmG85xjpf7u97eB46Xe_ZQRErP7Af4w4PRd7PNXs3AFq0hYNhvvcn6slAic7NqJ3VDa1ADOGS3Wxd_BmvpZWFfk6kHNg7v9fThY9XnKW94nnNnGDrC7nJfILFL8RjiSOASzHhasRKkt7X1t6mGqptKvxDnBbQaie9zF3-fBBDEggvGC4DTdxROMimTSljiOzzxPqMkkKkwSuLs4NPki0JuSSgoZKNcsKXxWLquS6mEDucAc5Pu-p4kDS7ffvqa-QlDzguQXGvIHiBO9DKQEgOUUxlsEPGirvAURN3S9CQ0GMP4ZQRXFwt0kvjFZdiCurqD8nkQLxTW6shehGxLrct64OqIzfyFAfWj7g-y_ZoCc40sfJ-dR08hBjn-xIsfpt8Z407I_xGN-lEVXwKlxQ2A-Y8m5FUmFI0AqD3gbg44qGq2pm7nYSKrq5vH_O4qhedssFQ2vxa_5Awnv8Tn5y1HcxHrC8fS-UdfU5DmkS3J3jojrVW6dgUwL5gmZoXKudOrbhQq1ueqhMPjsYQBnjhtS58snoFzdOD7j-bNS-rKNjOPjlXUFwnYrp91_FgEQ6sPVTKdicmlptWPbn2g9lJRdhQcBJtstFOCrEClN6iXJnLbrwQRcUzhRxcvW7H-eNvxv3MpBNoBc6BDsLRgtJ-bOw_98VjM3azXGslqSFQhYLA3V2h9ttGlJiM1oOpJVQRpSMeifardee95a4zEAg'></script></head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">Dr. Alec T. Habig</div>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experiments">Experiments</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#outreach">Outreach</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Particle Astrophysicist</div>
+      <h1 class="hero-name">Dr. Alec T.<br/><em>Habig</em></h1>
+      <div class="hero-title-line">Professor of Physics &amp; Astronomy &nbsp;&middot;&nbsp; University of Minnesota Duluth &nbsp;&middot;&nbsp; Director of Graduate Studies</div>
+      <div class="hero-divider"></div>
+      <p class="hero-bio">
+        I study cosmic rays and neutrinos in the fun hybrid field of Particle Astrophysics — working at the crossroads of astronomy and experimental high energy physics, with detectors in deep underground labs and at Fermilab. My central aim is making sure the world&rsquo;s neutrino experiments are ready when the next massive star in our galaxy explodes.
+      </p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">58K+</div>
+          <div class="hero-stat-label">Citations</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">425+</div>
+          <div class="hero-stat-label">Publications</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">25+</div>
+          <div class="hero-stat-label">Years at UMD</div>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&author=1007082_Alec%20Thomas%20Habig" target="_blank">Full Publication List</a>
+        <a class="btn btn-outline" href="#research">Explore Research</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="photo-container">
+        <div class="photo-deco-tl"></div>
+        <div class="photo-deco-br"></div>
+        <img class="photo-frame"
+             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663574550559/QbqSYBSvwMLIUZho.jpg"
+             alt="Dr. Alec T. Habig, Professor of Physics and Astronomy"/>
+        <div class="photo-caption">University of Minnesota Duluth &nbsp;&middot;&nbsp; Department of Physics &amp; Astronomy</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <div class="section-rule"></div>
+  <section class="section" id="research">
+    <div class="section-header reveal">
+      <div class="section-tag">Research</div>
+      <h2 class="section-title">Listening for <em>Dying Stars</em></h2>
+    </div>
+    <div class="research-grid reveal">
+      <div class="research-text">
+        <p>
+          My research sits at the intersection of two great fields: particle physics and astrophysics. I work to extract <strong>astrophysical information from large underground neutrino detectors</strong> — machines buried hundreds or thousands of feet below the surface, shielded from the constant cosmic-ray background that would drown out the faint signals we seek.
+        </p>
+        <p>
+          The central question driving this work: when the next nearby star collapses and explodes as a <strong>core-collapse supernova</strong>, will we be ready? A supernova releases roughly 10<sup>53</sup> ergs of energy, of which 99% escapes as a burst of neutrinos — particles so elusive they pass through the entire Earth as if it weren&rsquo;t there. That burst arrives at Earth <em>hours before the visible light</em> does. Which means, if we catch it, we have hours of warning.
+        </p>
+        <p>
+          Beyond supernovae, I also measure neutrino oscillations — the quantum-mechanical process by which neutrinos transform between their three &ldquo;flavors&rdquo; as they travel. This phenomenon proved that neutrinos have mass, overturning decades of standard model assumptions.
+        </p>
+
+        <div class="blockquote">
+          <p>&ldquo;You get the neutrinos before you get the light. It takes hours before you see the photons &mdash; depending on the type of star, it could take up to 12 hours for the photons to blast their way out of the dying star, but the neutrinos escape immediately.&rdquo;</p>
+          <cite>&mdash; Alec Habig</cite>
+        </div>
+
+        <p>
+          My group at UMD has active roles in data acquisition systems, detector design, oscillation analysis, and astrophysical triggering for several major international experiments. We collaborate with physicists across Japan, Italy, Canada, the UK, and across the United States.
+        </p>
+      </div>
+
+      <div class="research-side">
+        <h3>The Supernova Early Warning System</h3>
+        <div class="snews-card">
+          <p>
+            SNEWS is a global network linking every major neutrino experiment on Earth. The moment two or more detectors simultaneously register an unusual burst of neutrinos, SNEWS automatically fires an alert to over <strong>2,700 astronomers worldwide</strong> — giving them hours to point their telescopes before the light from the explosion arrives.
+          </p>
+          <p>
+            Co-founded with physicist Kate Scholberg (Duke University) in the late 1990s, SNEWS has never yet triggered — because no nearby supernova has occurred since 1987. Its upgraded version, <strong>SNEWS 2.0</strong>, adds richer multi-messenger capabilities for the modern era of gravitational wave and multi-wavelength astronomy.
+          </p>
+          <p>
+            A notable footnote: the original SNEWS code architecture was inspired by <em>Netrek</em>, a classic multiplayer space-combat game that Habig helped develop in the early 1990s. Elegant problem-solving rarely stays in one domain.
+          </p>
+        </div>
+
+        <h3 style="margin-top:2rem;">Key Research Questions</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem;">
+          <li style="font-size:0.85rem;color:var(--cream2);font-weight:300;padding-left:1rem;border-left:2px solid var(--teal);line-height:1.6;">What are the masses of the three neutrino mass states?</li>
+          <li style="font-size:0.85rem;color:var(--cream2);font-weight:300;padding-left:1rem;border-left:2px solid var(--teal);line-height:1.6;">Is there CP violation in the lepton sector — and could it explain why matter dominates the universe?</li>
+          <li style="font-size:0.85rem;color:var(--cream2);font-weight:300;padding-left:1rem;border-left:2px solid var(--teal);line-height:1.6;">What can a supernova neutrino burst teach us about stellar physics and exotic new particles?</li>
+          <li style="font-size:0.85rem;color:var(--cream2);font-weight:300;padding-left:1rem;border-left:2px solid var(--teal);line-height:1.6;">How do neutrinos interact with matter at energies relevant to long-baseline experiments?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIMENTS -->
+  <div class="section-rule"></div>
+  <section class="section" id="experiments">
+    <div class="section-header reveal">
+      <div class="section-tag">Active &amp; Past Experiments</div>
+      <h2 class="section-title">The <em>Instruments</em></h2>
+    </div>
+    <div class="research-grid reveal">
+      <div>
+        <h3 style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:400;color:var(--cream);margin-bottom:1.2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--line);">Currently Active</h3>
+        <ul class="exp-list">
+          <li class="exp-item">
+            <span class="exp-name">DUNE</span>
+            <span class="exp-desc">
+              Deep Underground Neutrino Experiment. The flagship next-generation long-baseline experiment, hosted at Fermilab and the Sanford Underground Research Facility in South Dakota. DUNE will fire the world&rsquo;s most intense neutrino beam 1,300 km through the Earth. Habig has roles in data acquisition and near-detector design.
+            </span>
+          </li>
+          <li class="exp-item">
+            <span class="exp-name">NOvA</span>
+            <span class="exp-desc">
+              NuMI Off-axis &nu;<sub>e</sub> Appearance experiment. 14,000-ton detector at Ash River, MN, measuring neutrino oscillations in a beam from Fermilab, 810 km away. Habig serves as Project Scientist and leads astrophysical triggering work.
+            </span>
+          </li>
+          <li class="exp-item">
+            <span class="exp-name">SNEWS 2.0</span>
+            <span class="exp-desc">
+              Upgraded Supernova Early Warning System. Multi-messenger upgrade enabling richer alert data for the astronomical community. Habig is Co-PI.
+            </span>
+          </li>
+          <li class="exp-item">
+            <span class="exp-name">HALO</span>
+            <span class="exp-desc">
+              Helium and Lead Observatory, at SNOLAB in Canada. A dedicated supernova neutrino detector contributing to the SNEWS network.
+            </span>
+          </li>
+          <li class="exp-item">
+            <span class="exp-name">Super-K</span>
+            <span class="exp-desc">
+              Super-Kamiokande, Kamioka Mine, Japan. The iconic 50,000-ton water Cherenkov detector where Habig worked as a postdoc under Nobel laureate Takaaki Kajita. Still running and a core SNEWS node.
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:400;color:var(--cream);margin-bottom:1.2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--line);">Completed</h3>
+        <ul class="exp-list">
+          <li class="exp-item">
+            <span class="exp-name">MINOS+</span>
+            <span class="exp-desc">
+              Main Injector Neutrino Oscillation Search, extended run. Long-baseline oscillation experiment between Fermilab and the Soudan Underground Laboratory in Minnesota.
+            </span>
+          </li>
+          <li class="exp-item">
+            <span class="exp-name">MINOS</span>
+            <span class="exp-desc">
+              Original MINOS experiment at Soudan. Habig was recruited to UMD in 2000 specifically to lead this cutting-edge work, spending years running the Soudan far detector.
+            </span>
+          </li>
+          <li class="exp-item">
+            <span class="exp-name">MINERvA</span>
+            <span class="exp-desc">
+              Main Injector Experiment for &nu;-A. Precision measurements of neutrino interactions on a variety of nuclear targets, providing critical input for oscillation analyses.
+            </span>
+          </li>
+          <li class="exp-item">
+            <span class="exp-name">MACRO</span>
+            <span class="exp-desc">
+              Monopole and Cosmic Ray Observatory, Gran Sasso Laboratory, Italy. Searched for magnetic monopoles and studied atmospheric neutrinos. Shut down December 2000.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER -->
+  <div class="section-rule"></div>
+  <section class="section" id="career">
+    <div class="section-header reveal">
+      <div class="section-tag">Education &amp; Career</div>
+      <h2 class="section-title">The <em>Journey</em></h2>
+    </div>
+    <div class="research-grid reveal">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2000 &ndash; Present</div>
+          <div class="tl-role">Professor of Physics &amp; Astronomy</div>
+          <div class="tl-place">University of Minnesota Duluth &mdash; Director of Graduate Studies</div>
+          <div class="tl-note">Recruited to lead neutrino physics experiments including MINOS at the Soudan Underground Laboratory and NOvA at Ash River. Teaches both undergraduate and graduate students in physics and astrophysics. Has served as Department Head.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1996 &ndash; 2000</div>
+          <div class="tl-role">Postdoctoral Researcher</div>
+          <div class="tl-place">Boston University &mdash; Particle Astrophysics Group</div>
+          <div class="tl-note">Worked under Ed Kearns and collaborated closely with Takaaki Kajita&rsquo;s team at Super-Kamiokande in Japan, spending roughly a third to half of his time at the detector — helping pursue what Habig calls the &ldquo;big question&rdquo; of whether neutrinos have mass. Also co-founded SNEWS during this period.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1996</div>
+          <div class="tl-role">Ph.D., Physics</div>
+          <div class="tl-place">Indiana University</div>
+          <div class="tl-note">Doctoral training in experimental particle physics, laying the groundwork for a career studying the universe&rsquo;s most abundant — and most elusive — massive particles.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1992</div>
+          <div class="tl-role">M.A., Physics</div>
+          <div class="tl-place">Indiana University</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1989</div>
+          <div class="tl-role">B.S., Physics</div>
+          <div class="tl-place">Wright State University</div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:400;color:var(--cream);margin-bottom:1.2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--line);">Professional Memberships</h3>
+        <ul class="exp-list">
+          <li class="exp-item" style="padding:0.75rem 0;">
+            <span class="exp-desc">American Astronomical Society &mdash; High Energy Astrophysics Division</span>
+          </li>
+          <li class="exp-item" style="padding:0.75rem 0;">
+            <span class="exp-desc">American Physical Society &mdash; Divisions of Particles &amp; Fields, and Astrophysics</span>
+          </li>
+          <li class="exp-item" style="padding:0.75rem 0;">
+            <span class="exp-desc">UMD Representative, Minnesota Space Grant Consortium (NASA)</span>
+          </li>
+          <li class="exp-item" style="padding:0.75rem 0;">
+            <span class="exp-desc">SNEWS Co-Principal Investigator (with Kate Scholberg, Duke; Segev BenZvi, Rochester; James Kneller, NC State; Dan Milisavljevic, Purdue)</span>
+          </li>
+        </ul>
+
+        <h3 style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:400;color:var(--cream);margin:2rem 0 1.2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--line);">Nobel Connection</h3>
+        <p style="font-size:0.88rem;color:var(--cream2);line-height:1.8;font-weight:300;">
+          The 2015 Nobel Prize in Physics was awarded to Takaaki Kajita (Japan) and Arthur McDonald (Canada) for the discovery of neutrino oscillations &mdash; work conducted at the experiments Habig was directly part of. Of both laureates, he said simply: <em style="color:var(--cream);">&ldquo;Two of the best people you can imagine.&rdquo;</em>
+          <br/><br/>
+          Habig and his collaborators shared the 2016 <strong>Breakthrough Prize in Fundamental Physics</strong> for this body of work as part of the Super-Kamiokande collaboration.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <div class="section-rule"></div>
+  <section class="section" id="awards">
+    <div class="section-header reveal">
+      <div class="section-tag">Honors &amp; Awards</div>
+      <h2 class="section-title">Recognition</h2>
+    </div>
+    <div class="awards-grid reveal">
+      <div class="award-card">
+        <div class="award-year">2016</div>
+        <div class="award-name">Breakthrough Prize in Fundamental Physics</div>
+        <div class="award-desc">Awarded with the Super-Kamiokande collaboration for the discovery of neutrino oscillations, establishing that neutrinos have mass and overthrowing decades of received wisdom in particle physics.</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year">2004 &ndash; 2006</div>
+        <div class="award-name">McKnight Land-Grant Professor</div>
+        <div class="award-desc">A prestigious University of Minnesota distinction recognizing outstanding early-career faculty for exceptional research productivity and scholarly achievement.</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year">1998</div>
+        <div class="award-name">Asahi Prize</div>
+        <div class="award-desc">A distinguished Japanese award for achievement in science and culture, presented to the Super-Kamiokande collaboration for breakthrough contributions to neutrino oscillation physics.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <div class="section-rule"></div>
+  <section class="section" id="publications">
+    <div class="section-header reveal">
+      <div class="section-tag">Publications</div>
+      <h2 class="section-title">Selected <em>Works</em></h2>
+    </div>
+    <div class="pub-summary reveal">
+      <div class="pub-stat">
+        <div class="pub-num">425+</div>
+        <div class="pub-lbl">Publications</div>
+      </div>
+      <div class="pub-stat">
+        <div class="pub-num">58,358</div>
+        <div class="pub-lbl">Citations</div>
+      </div>
+      <div class="pub-stat">
+        <div class="pub-num">8</div>
+        <div class="pub-lbl">Major Experiments</div>
+      </div>
+      <div class="pub-stat">
+        <div class="pub-num">25+</div>
+        <div class="pub-lbl">Years of Data</div>
+      </div>
+    </div>
+
+    <ul class="pubs-list reveal">
+      <li class="pub-item">
+        <span class="pub-year">2020</span>
+        <div>
+          <div class="pub-title">The Supernova Early Warning System</div>
+          <div class="pub-journal"><em>Nature Reviews Physics</em>, 2, 458&ndash;460</div>
+          <div class="pub-collab">Habig &amp; Scholberg — Co-authored overview of SNEWS network and multi-messenger capabilities</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-year">2020</span>
+        <div>
+          <div class="pub-title">Long-baseline Neutrino Oscillation Physics Potential of the DUNE Experiment</div>
+          <div class="pub-journal"><em>The European Physical Journal C</em>, 80, 978</div>
+          <div class="pub-collab">DUNE Collaboration</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-year">2020</span>
+        <div>
+          <div class="pub-title">Supernova Neutrino Detection in NOvA</div>
+          <div class="pub-journal"><em>Journal of Cosmology and Astroparticle Physics</em></div>
+          <div class="pub-collab">NOvA Collaboration</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-year">2016</span>
+        <div>
+          <div class="pub-title">Constraints on Oscillation Parameters from &nu;<sub>e</sub> Appearance and &nu;<sub>&mu;</sub> Disappearance in NOvA</div>
+          <div class="pub-journal"><em>Physical Review Letters</em>, 118, 151803</div>
+          <div class="pub-collab">NOvA Collaboration</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-year">2014</span>
+        <div>
+          <div class="pub-title">Combined Analysis of &nu;<sub>&mu;</sub> Disappearance and &nu;<sub>&mu;</sub> &rarr; &nu;<sub>e</sub> Appearance in MINOS Using Accelerator and Atmospheric Neutrinos</div>
+          <div class="pub-journal"><em>Physical Review Letters</em>, 112, 191801</div>
+          <div class="pub-collab">MINOS Collaboration</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-year">2005</span>
+        <div>
+          <div class="pub-title">SNEWS: The Supernova Early Warning System</div>
+          <div class="pub-journal"><em>Nuclear Instruments and Methods in Physics Research A</em></div>
+          <div class="pub-collab">Habig &amp; the SNEWS Group</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-year">1998</span>
+        <div>
+          <div class="pub-title">Evidence for an Oscillatory Signature in Atmospheric Neutrino Oscillation</div>
+          <div class="pub-journal"><em>Physical Review Letters</em> — Super-Kamiokande result leading to the Nobel Prize</div>
+          <div class="pub-collab">Super-Kamiokande Collaboration (Kajita et al.)</div>
+        </div>
+      </li>
+    </ul>
+
+    <div style="margin-top:2rem;text-align:center;">
+      <a class="btn btn-outline" href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&author=1007082_Alec%20Thomas%20Habig" target="_blank">Full Publication List on InspireHEP &rarr;</a>
+    </div>
+  </section>
+
+  <!-- OUTREACH -->
+  <div class="section-rule"></div>
+  <section class="section" id="outreach">
+    <div class="section-header reveal">
+      <div class="section-tag">Teaching &amp; Outreach</div>
+      <h2 class="section-title">Bringing the Cosmos <em>Down to Earth</em></h2>
+    </div>
+    <div class="outreach-grid reveal">
+      <div class="outreach-card">
+        <h3>University Teaching</h3>
+        <p>At UMD, Dr. Habig teaches both undergraduate and graduate students in physics and astronomy. His courses are known for going deep into the mathematics and physical intuition behind the phenomena — particularly particle physics and astrophysics. He also serves as Director of Graduate Studies for the Department of Physics and Astronomy.</p>
+      </div>
+      <div class="outreach-card">
+        <h3>Stardust: The Universe in You</h3>
+        <p>Dr. Habig served as Science Advisor for <em>Stardust: The Universe in You</em>, a major traveling science exhibition produced by Flying Fish Exhibits. He helped transform complex astrophysical phenomena — including neutrinos and supernovae — into accurate, compelling, and accessible interactive experiences for general audiences worldwide.</p>
+      </div>
+      <div class="outreach-card">
+        <h3>Soudan Underground Lab &amp; NOvA Tours</h3>
+        <p>Through the NOvA outreach program, Dr. Habig and his group run regular summer tours of both the Soudan Underground Laboratory (Minnesota) and the NOvA far detector facility at Ash River, MN — giving students and the public a rare look inside world-class physics infrastructure.</p>
+      </div>
+      <div class="outreach-card">
+        <h3>Public Lectures &amp; Media</h3>
+        <p>A frequent voice in public science communication, Dr. Habig has spoken at the UMD Planetarium, contributed to SNEWS public outreach, and been quoted in coverage of Nobel Prize announcements in neutrino physics. He consistently translates the remarkable strangeness of neutrino science into language anyone can appreciate.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3.5rem;" class="reveal">
+      <div class="section-tag" style="margin-bottom:1rem;">Beyond the Lab</div>
+      <h3 style="font-family:Playfair Display,serif;font-weight:400;font-size:1.3rem;color:var(--cream);margin-bottom:1.5rem;">Interests &amp; Pursuits</h3>
+      <div class="interests-row">
+        <div class="interest-item"><span class="interest-icon">&#9992;&#65039;</span> Aviation &amp; Airplanes</div>
+        <div class="interest-item"><span class="interest-icon">&#128171;</span> Neutrino Physics</div>
+        <div class="interest-item"><span class="interest-icon">&#11088;</span> Supernovae &amp; Stellar Death</div>
+        <div class="interest-item"><span class="interest-icon">&#127760;</span> Multi-Messenger Astronomy</div>
+        <div class="interest-item"><span class="interest-icon">&#127918;</span> Classic Multiplayer Games (Netrek)</div>
+        <div class="interest-item"><span class="interest-icon">&#128104;&#8205;&#127979;</span> Graduate Education</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDO -->
+  <div class="guido-section">
+    <div class="guido-inner reveal">
+      <div class="guido-paw">&#128062;</div>
+      <div class="guido-content">
+        <div class="guido-tag">A Valued Member of the Team</div>
+        <h2>Guido</h2>
+        <p>
+          Every physicist needs a good companion for the long hours between supernovae. Guido fills this role admirably — steadfast, warm, and entirely unbothered by questions of lepton universality. A faithful presence, and an excellent judge of character.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section-rule"></div>
+  <section class="section" id="contact">
+    <div class="section-header reveal">
+      <div class="section-tag">Get in Touch</div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="research-grid reveal">
+      <div>
+        <p style="font-size:0.92rem;color:var(--cream2);font-weight:300;line-height:1.9;max-width:440px;margin-bottom:1.5rem;">
+          For research inquiries, collaboration proposals, media requests, or questions about graduate studies in Physics &amp; Astronomy at UMD, please reach out directly.
+        </p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
+          <li style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="font-family:DM Mono,monospace;font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;padding-top:0.1rem;min-width:60px;">Email</span>
+            <span style="font-size:0.88rem;color:var(--cream2);font-weight:300;">ahabig@umn.edu</span>
+          </li>
+          <li style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="font-family:DM Mono,monospace;font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;padding-top:0.1rem;min-width:60px;">Phone</span>
+            <span style="font-size:0.88rem;color:var(--cream2);font-weight:300;">218-726-7214</span>
+          </li>
+          <li style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="font-family:DM Mono,monospace;font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;padding-top:0.1rem;min-width:60px;">Office</span>
+            <span style="font-size:0.88rem;color:var(--cream2);font-weight:300;">MWAH 358, University of Minnesota Duluth Campus</span>
+          </li>
+          <li style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="font-family:DM Mono,monospace;font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;padding-top:0.1rem;min-width:60px;">SNEWS</span>
+            <span style="font-size:0.88rem;color:var(--cream2);font-weight:300;">snews2.org</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:Playfair Display,serif;font-weight:400;font-size:1.1rem;color:var(--cream);margin-bottom:1.2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--line);">Profiles &amp; Data</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+          <li><a href="https://cse.umn.edu/physics/alec-habig" target="_blank" style="font-size:0.87rem;color:var(--teal2);text-decoration:none;font-weight:300;display:flex;gap:0.5rem;align-items:center;">&#8599; UMN School of Physics &amp; Astronomy Profile</a></li>
+          <li><a href="https://scholar.google.com/citations?user=RxA7AFoAAAAJ" target="_blank" style="font-size:0.87rem;color:var(--teal2);text-decoration:none;font-weight:300;display:flex;gap:0.5rem;align-items:center;">&#8599; Google Scholar</a></li>
+          <li><a href="https://inspirehep.net/authors/1007082" target="_blank" style="font-size:0.87rem;color:var(--teal2);text-decoration:none;font-weight:300;display:flex;gap:0.5rem;align-items:center;">&#8599; InspireHEP Author Page</a></li>
+          <li><a href="https://snews2.org" target="_blank" style="font-size:0.87rem;color:var(--teal2);text-decoration:none;font-weight:300;display:flex;gap:0.5rem;align-items:center;">&#8599; SNEWS 2.0 Project</a></li>
+          <li><a href="https://www.mnspacegrant.org/dr-alec-habig/" target="_blank" style="font-size:0.87rem;color:var(--teal2);text-decoration:none;font-weight:300;display:flex;gap:0.5rem;align-items:center;">&#8599; Minnesota Space Grant Consortium</a></li>
+          <li><a href="https://github.com/habig" target="_blank" style="font-size:0.87rem;color:var(--teal2);text-decoration:none;font-weight:300;display:flex;gap:0.5rem;align-items:center;">&#8599; GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid var(--line);margin-top:3rem;"></div>
+  <footer>
+    <div>
+      <div class="footer-brand">Dr. Alec T. <em>Habig</em></div>
+      <p class="footer-sub">Professor of Physics &amp; Astronomy, University of Minnesota Duluth. Particle astrophysicist. Supernova sentinel. Co-founder of SNEWS.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Research</h4>
+      <ul>
+        <li><a href="#research">Neutrino Physics</a></li>
+        <li><a href="#experiments">Experiments</a></li>
+        <li><a href="#publications">Publications</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>More</h4>
+      <ul>
+        <li><a href="#career">Career &amp; Education</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#outreach">Outreach</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>Dr. Alec T. Habig &nbsp;&middot;&nbsp; University of Minnesota Duluth &nbsp;&middot;&nbsp; Department of Physics &amp; Astronomy</span>
+    <span>ahabig@umn.edu</span>
+  </div>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll(".reveal");
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("revealed");
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+
+    // Smooth nav active state
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute("href") === "#" + current
+          ? "var(--gold2)" : "";
+      });
+    });
+  </script>
+</body>
+</html>
